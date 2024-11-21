@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Shop</title>
+    <style>
+      * {
+        font-family: "Montserrat", sans-serif;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        font-weight: bold;
+        margin: 10px 0;
+        font-size: 1.1em;
+        line-height: 1.6;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+      }
+      li span {
+        font-weight: 600;
+        display: block;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="productList">
+    </ul>
+    <script>
+
+      const products = [
+        { name: "Сүү", price: 4000, category: "Хүнс", rating: 4.6 },
+        { name: "Дэвтэр", price: 2000, category: "Бусад", rating: 4.2 },
+        { name: "Чихэр", price: 500, category: "Хүнс", rating: 3.9 },
+        { name: "Ус", price: 1500, category: "Хүнс", rating: 5 },
+        { name: "Шоколад", price: 6000, category: "Хүнс", rating: 4.2 },
+        { name: "Алчуур", price: 2500, category: "Ариун цэвэр", rating: 3.5 },
+        { name: "Ногоо", price: 1500, category: "Хүнс", rating: 4.7 },
+        { name: "Саван", price: 2000, category: "Ариун цэвэр", rating: 3 },
+        { name:  "Ундаа", price: 3000, rating:4}
+      ];
+
+      // Жагсаалтыг үүсгэх үндсэн функц
+      function renderProductList() {
+        
+        const container = document.getElementById("productList");
+           // 1 бүтээгдэхүүн render
+
+
+
+  
+
+        products.forEach((product) => {
+          const li = document.createElement("li");
+          let productName = product.name
+          const discountedPrice = calculateDiscount(product.price);
+          li.innerHTML = `${productName} ${getStarRating(product.rating)} <span>Анхны Үнэ: ₮${product.price}👉Хямдралтай Үнэ: ₮${discountedPrice}</span>`;
+          container.appendChild(li);
+          
+        });
+
+        //Бодолт хийгээд үргэлжлүүлээрэй
+      }
+
+  
+      // Хямдралын үнэ тооцох функц
+      function calculateDiscount(price) {
+       return price * 0.85
+
+        // 15%-ийн хямдрал. Бодолт хийгээд үргэлжлүүлээрэй
+      }
+
+      // Үнэлгээнд од нэмэх функц
+      function getStarRating(rating) {
+        if (rating >= 4) {
+          return "⭐"
+        } else {
+          return ""
+        }
+           //  Бодолт хийгээд үргэлжлүүлээрэй
+      }
+
+      renderProductList();
+    </script>
+  </body>
+</html>
